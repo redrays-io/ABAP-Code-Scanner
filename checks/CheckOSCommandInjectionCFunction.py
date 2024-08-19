@@ -1,0 +1,43 @@
+# checks/check_os_command_injection_c_function.py
+
+import re
+from dataclasses import dataclass
+from typing import List
+
+@dataclass
+class CheckResult:
+    line_number: int
+    line_content: str
+
+class CheckOSCommandInjectionCFunction:
+    title = "Potential OS Command injection detected - C Function"
+    severity = "High"
+    vulnerability_type = "OS Command injection"
+
+    def __init__(self):
+        self.main_pattern = re.compile(
+            r"(?smi)^[\s]*(CALL)\s*'\w+'.+?\.",
+            re.DOTALL | re.IGNORECASE
+        )
+        self.call_pattern = re.compile(r"(CALL)\s*'\w+'", re.IGNORECASE)
+        self.field_pattern = re.compile(r"FIELD\s*\w+", re.IGNORECASE)
+        self.exclude_pattern = re.compile(
+            r"(SYSTEM|ThWpInfo|C_(DB_((FUNCTION|EXECUTE)?)|RSTRB_READ_BUFFERED)|ALERTS)",
+            re.IGNORECASE
+        )
+
+    def check_second_stage(self, match_text: str) -> bool:
+        if self.call_pattern.search(match_text):
+            if self.exclude_pattern.search(match_text):
+                return False
+            if self.field_pattern.search(match_text):
+                return True
+        return False
+
+    def run(self, file_content: str) -> List[CheckResult]:
+        results = []
+        for match in self.main_pattern.finditer(file_content):
+            if self.check_second_stage(match.group()):
+                line_number = file_content[:match.start()].count('\n') + 1
+                results.append(CheckResult(line_number, match.group().strip()))
+        return results

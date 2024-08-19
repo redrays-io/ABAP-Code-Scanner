@@ -1,0 +1,53 @@
+stages:
+  - lint
+  - test
+  - build
+  - deploy
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip-cache"
+
+cache:
+  paths:
+    - .pip-cache/
+
+lint:
+  stage: lint
+  image: python:3.9
+  before_script:
+    - pip install flake8
+  script:
+    - flake8 .
+
+test:
+  stage: test
+  image: python:3.9
+  before_script:
+    - pip install -r requirements.txt
+    - pip install pytest pytest-cov
+  script:
+    - pytest tests/ --cov=./ --cov-report=xml
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
+
+build:
+  stage: build
+  image: python:3.9
+  script:
+    - pip install pyinstaller
+    - pyinstaller --onefile main.py
+  artifacts:
+    paths:
+      - dist/main
+
+deploy:
+  stage: deploy
+  image: python:3.9
+  script:
+    - echo "Deploying application..."
+    # Add your deployment steps here
+  only:
+    - main  # This job will only run on the main branch
