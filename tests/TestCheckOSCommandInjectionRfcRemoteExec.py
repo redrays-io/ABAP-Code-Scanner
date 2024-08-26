@@ -1,7 +1,7 @@
-# tests/test_check_os_command_injection_rfc_remote_exec.py
-
 import unittest
-from checks.CheckOSCommandInjectionRfcRemoteExec import CheckOSCommandInjectionRfcRemoteExec, CheckResult
+
+from checks.CheckOSCommandInjectionRfcRemoteExec import CheckOSCommandInjectionRfcRemoteExec
+
 
 class TestCheckOSCommandInjectionRfcRemoteExec(unittest.TestCase):
 
@@ -79,6 +79,7 @@ class TestCheckOSCommandInjectionRfcRemoteExec(unittest.TestCase):
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 1)
+
 
 if __name__ == '__main__':
     unittest.main()

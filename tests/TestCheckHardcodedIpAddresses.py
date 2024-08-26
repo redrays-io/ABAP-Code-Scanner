@@ -1,7 +1,7 @@
-# tests/test_check_hardcoded_ip_addresses.py
-
 import unittest
-from checks.CheckHardcodedIpAddresses import CheckHardcodedIpAddresses, CheckResult
+
+from checks.CheckHardcodedIpAddresses import CheckHardcodedIpAddresses
+
 
 class TestCheckHardcodedIpAddresses(unittest.TestCase):
 
@@ -48,6 +48,7 @@ class TestCheckHardcodedIpAddresses(unittest.TestCase):
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 1)
+
 
 if __name__ == '__main__':
     unittest.main()

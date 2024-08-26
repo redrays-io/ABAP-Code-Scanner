@@ -1,5 +1,7 @@
 import unittest
-from checks.CheckExecuteProcedure import CheckExecuteProcedure, CheckResult
+
+from checks.CheckExecuteProcedure import CheckExecuteProcedure
+
 
 class TestCheckExecuteProcedure(unittest.TestCase):
 
@@ -49,6 +51,7 @@ class TestCheckExecuteProcedure(unittest.TestCase):
         code = "DATA: lv_string = 'This string contains execute_procedure('."
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)  # Note: This detects the method call even in strings
+
 
 if __name__ == '__main__':
     unittest.main()

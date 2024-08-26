@@ -1,5 +1,7 @@
 import unittest
-from checks.CheckGenerateSubroutinePool import CheckGenerateSubroutinePool, CheckResult
+
+from checks.CheckGenerateSubroutinePool import CheckGenerateSubroutinePool
+
 
 class TestCheckGenerateSubroutinePool(unittest.TestCase):
 
@@ -55,6 +57,7 @@ class TestCheckGenerateSubroutinePool(unittest.TestCase):
         code = "DATA: lv_code. GENERATE SUBROUTINE POOL lv_code."
         results = self.checker.run(code)
         self.assertEqual(len(results), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

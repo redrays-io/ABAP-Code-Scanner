@@ -1,7 +1,7 @@
-# tests/test_check_directory_traversal_rfc_remote_file.py
-
 import unittest
-from checks.CheckDirectoryTraversalRfcRemoteFile import CheckDirectoryTraversalRfcRemoteFile, CheckResult
+
+from checks.CheckDirectoryTraversalRfcRemoteFile import CheckDirectoryTraversalRfcRemoteFile
+
 
 class TestCheckDirectoryTraversalRfcRemoteFile(unittest.TestCase):
 
@@ -70,6 +70,7 @@ class TestCheckDirectoryTraversalRfcRemoteFile(unittest.TestCase):
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 1)
+
 
 if __name__ == '__main__':
     unittest.main()

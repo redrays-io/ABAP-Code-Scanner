@@ -1,7 +1,6 @@
-# tests/test_check_os_command_injection_call_system.py
-
 import unittest
-from checks.CheckOSCommandInjectionCallSystem import CheckOSCommandInjectionCallSystem, CheckResult
+
+from checks.CheckOSCommandInjectionCallSystem import CheckOSCommandInjectionCallSystem
 
 
 class TestCheckOSCommandInjectionCallSystem(unittest.TestCase):

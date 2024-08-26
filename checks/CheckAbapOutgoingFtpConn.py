@@ -1,16 +1,16 @@
-# checks/check_abap_outgoing_ftp_conn.py
-
 import re
 from dataclasses import dataclass
 from typing import List
+
 
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckAbapOutgoingFtpConn:
-    title = "Outgoing FTP Connection"
+    title = "Insecure Outgoing FTP Connection"
     severity = "Low"
     vulnerability_type = "Unencrypted Communications"
 
@@ -26,4 +26,3 @@ class CheckAbapOutgoingFtpConn:
             line_number = file_content[:match.start()].count('\n') + 1
             return [CheckResult(line_number, match.group().strip())]
         return []
-

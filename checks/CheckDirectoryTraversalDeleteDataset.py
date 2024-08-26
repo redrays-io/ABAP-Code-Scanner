@@ -1,18 +1,17 @@
-# checks/check_directory_traversal_read_dataset.py
-
 import re
 from dataclasses import dataclass
 from typing import List
-from enum import Enum
+
 
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckDirectoryTraversalDeleteDataset:
-    title = "Path Traversal - DELETE DATASET"
-    severity = "HIGH"
+    title = "Directory Traversal Vulnerability in DELETE DATASET"
+    severity = "High"
     vulnerability_type = "Path Traversal"
 
     def __init__(self):

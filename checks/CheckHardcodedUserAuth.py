@@ -1,5 +1,3 @@
-# checks/check_hardcoded_user_auth.py
-
 import re
 from dataclasses import dataclass
 from typing import List
@@ -12,13 +10,13 @@ class CheckResult:
 
 
 class CheckHardcodedUserAuth:
-    title = "Authorization checks should not rely on hardcoded user properties"
+    title = "Insecure Authorization: Hardcoded User Property Dependency"
     severity = "Critical"
     vulnerability_type = "Insecure Authorization"
 
     def __init__(self):
         self.pattern = re.compile(
-            r"(?sim)IF\s+(SY|SYST)-UNAME\s+(=|EQ|<>|NE)",
+            r"(?sim)IF\s+(SY|SYST)-UNAME\s+(=|EQ|<>|NE)\s+['\"].*?$",
             re.IGNORECASE | re.MULTILINE
         )
         self.case_pattern = re.compile(
@@ -35,4 +33,3 @@ class CheckHardcodedUserAuth:
                 results.append(CheckResult(i, line.strip()))
 
         return results
-

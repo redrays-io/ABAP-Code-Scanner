@@ -1,16 +1,16 @@
-# checks/check_os_command_injection_rfc_remote_exec.py
-
 import re
 from dataclasses import dataclass
 from typing import List
+
 
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckOSCommandInjectionRfcRemoteExec:
-    title = "Potential OS Command injection detected - RFC_REMOTE_EXEC"
+    title = "OS Command Injection Vulnerability in RFC_REMOTE_EXEC statement"
     severity = "High"
     vulnerability_type = "OS Command injection"
 

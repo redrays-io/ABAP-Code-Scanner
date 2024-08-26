@@ -2,13 +2,15 @@ import re
 from dataclasses import dataclass
 from typing import List
 
+
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckCallTransformation:
-    title = "XML Injection via \"CALL TRANSFORMATION\""
+    title = "Possible XML Injection Vulnerability in CALL TRANSFORMATION"
     severity = "High"
     vulnerability_type = "XML Injection"
 

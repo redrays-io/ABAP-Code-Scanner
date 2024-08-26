@@ -1,5 +1,6 @@
 import unittest
-from checks.CheckDirectoryTraversalCallAlerts import CheckDirectoryTraversalCallAlerts, CheckResult
+
+from checks.CheckDirectoryTraversalCallAlerts import CheckDirectoryTraversalCallAlerts
 
 
 class TestCheckABAPDirectoryTraversalAlerts(unittest.TestCase):
@@ -72,7 +73,7 @@ class TestCheckABAPDirectoryTraversalAlerts(unittest.TestCase):
         ID 'TYPE' FIELD 'DATA'
         ID 'RECTYP' FIELD 'U------' 
         ID 'RC' FIELD _RC
-        ID 'ERRMSG' FIELD ERRMSG.
+        ID 'ERRMSG' FIELD ERRMSG. 
         """
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
@@ -108,6 +109,7 @@ class TestCheckABAPDirectoryTraversalAlerts(unittest.TestCase):
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 2)
+
 
 if __name__ == '__main__':
     unittest.main()

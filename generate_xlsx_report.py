@@ -1,18 +1,35 @@
+from dataclasses import dataclass
+from typing import List
+
 import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.utils import get_column_letter
-from typing import List, Dict
-from dataclasses import dataclass
+
 
 @dataclass
 class ScanResult:
     file_path: str
     line_number: int
-    check_name: str
+    title: str
     message: str
     severity: str
 
+
+def severity_key(result: ScanResult):
+    severity_order = {
+        "Critical": 1,
+        "High": 2,
+        "Medium": 3,
+        "Low": 4,
+        "Info": 5
+    }
+    return severity_order.get(result.severity, 6)
+
+
 def generate_xlsx_report(results: List[ScanResult], output_file: str):
+    # Sort results by severity
+    results.sort(key=severity_key)
+
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "Scan Results"
@@ -25,14 +42,14 @@ def generate_xlsx_report(results: List[ScanResult], output_file: str):
 
     severity_colors = {
         "Critical": "FF0000",  # Red
-        "High": "FFA500",      # Orange
-        "Medium": "FFFF00",    # Yellow
-        "Low": "90EE90",       # Light Green
-        "Info": "ADD8E6"       # Light Blue
+        "High": "FFA500",  # Orange
+        "Medium": "FFFF00",  # Yellow
+        "Low": "90EE90",  # Light Green
+        "Info": "ADD8E6"  # Light Blue
     }
 
     # Write headers
-    headers = ["Severity", "Check Name", "File Path", "Line Number", "Message"]
+    headers = ["Severity", "Title", "File Path", "Line Number", "Message"]
     for col, header in enumerate(headers, start=1):
         cell = ws.cell(row=1, column=col, value=header)
         cell.font = header_font
@@ -42,7 +59,7 @@ def generate_xlsx_report(results: List[ScanResult], output_file: str):
     # Write data
     for row, result in enumerate(results, start=2):
         ws.cell(row=row, column=1, value=result.severity).alignment = wrapped_alignment
-        ws.cell(row=row, column=2, value=result.check_name).alignment = wrapped_alignment
+        ws.cell(row=row, column=2, value=result.title).alignment = wrapped_alignment
         ws.cell(row=row, column=3, value=result.file_path).alignment = wrapped_alignment
         ws.cell(row=row, column=4, value=result.line_number).alignment = wrapped_alignment
         ws.cell(row=row, column=5, value=result.message).alignment = wrapped_alignment
@@ -58,15 +75,24 @@ def generate_xlsx_report(results: List[ScanResult], output_file: str):
     for col in range(1, len(headers) + 1):
         ws.column_dimensions[get_column_letter(col)].auto_size = True
 
-    # Set a maximum width for the message column
-    message_column = get_column_letter(headers.index("Message") + 1)
-    ws.column_dimensions[message_column].width = 50  # Adjust this value as needed
+        # Set a maximum width for the message column
+        message_column = get_column_letter(headers.index("Message") + 1)
+        ws.column_dimensions[message_column].width = 50  # Adjust this value as needed
+
+        # Set a maximum width for the check name column
+        title = get_column_letter(headers.index("Title") + 1)
+        ws.column_dimensions[title].width = 50  # Adjust this value as needed
+
+        # Set a maximum width for the file path column
+        file_path = get_column_letter(headers.index("File Path") + 1)
+        ws.column_dimensions[file_path].width = 50  # Adjust this value as needed
 
     # Add filters
     ws.auto_filter.ref = ws.dimensions
 
     # Save the workbook
     wb.save(output_file)
+
 
 # Example usage
 if __name__ == "__main__":

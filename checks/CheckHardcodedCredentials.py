@@ -1,7 +1,6 @@
 import re
 from dataclasses import dataclass
 from typing import List
-from enum import Enum
 
 
 @dataclass
@@ -9,8 +8,9 @@ class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckHardcodedCredentials:
-    title = "Hard-coded credentials are security-sensitive"
+    title = "Hardcoded Credential Detection"
     severity = "High"
     vulnerability_type = "Hard-coded credentials"
 

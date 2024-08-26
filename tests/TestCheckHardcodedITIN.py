@@ -1,5 +1,7 @@
 import unittest
-from checks.CheckHardcodedITIN import CheckHardcodedITIN, CheckResult
+
+from checks.CheckHardcodedITIN import CheckHardcodedITIN
+
 
 class TestCheckHardcodedITIN(unittest.TestCase):
 
@@ -50,6 +52,7 @@ class TestCheckHardcodedITIN(unittest.TestCase):
         """
         results = self.checker.run(code)
         self.assertEqual(len(results), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

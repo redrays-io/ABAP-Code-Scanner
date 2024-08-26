@@ -1,7 +1,7 @@
-# tests/test_check_os_command_injection_c_function.py
-
 import unittest
-from checks.CheckOSCommandInjectionCFunction import CheckOSCommandInjectionCFunction, CheckResult
+
+from checks.CheckOSCommandInjectionCFunction import CheckOSCommandInjectionCFunction
+
 
 class TestCheckOSCommandInjectionCFunction(unittest.TestCase):
 
@@ -68,6 +68,7 @@ class TestCheckOSCommandInjectionCFunction(unittest.TestCase):
         """
         results = self.checker.run(code)
         self.assertEqual(len(results), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

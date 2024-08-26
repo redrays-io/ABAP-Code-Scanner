@@ -2,13 +2,15 @@ import re
 from dataclasses import dataclass
 from typing import List
 
+
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckOSCommandInjectionClientOS:
-    title = "Potential OS Command injection detected - GUI Function"
+    title = "OS Command Injection Vulnerability in GUI Function statement"
     severity = "High"
     vulnerability_type = "OS Command injection"
 
@@ -24,4 +26,3 @@ class CheckOSCommandInjectionClientOS:
             line_number = file_content[:match.start()].count('\n') + 1
             results.append(CheckResult(line_number, match.group().strip()))
         return results
-

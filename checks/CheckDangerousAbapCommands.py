@@ -1,16 +1,16 @@
-# checks/check_dangerous_abap_commands.py
-
 import re
 from dataclasses import dataclass
 from typing import List
+
 
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckDangerousAbapCommands:
-    title = "Dangerous ABAP statements"
+    title = "High-Risk ABAP Statement Usage"
     severity = "Medium"
     vulnerability_type = "Validation Required"
 

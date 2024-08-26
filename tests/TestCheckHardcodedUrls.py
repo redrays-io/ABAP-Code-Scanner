@@ -1,7 +1,7 @@
-# tests/test_check_hardcoded_urls.py
-
 import unittest
-from checks.CheckHardcodedUrls import CheckHardcodedUrls, CheckResult
+
+from checks.CheckHardcodedUrls import CheckHardcodedUrls
+
 
 class TestCheckHardcodedUrls(unittest.TestCase):
 
@@ -58,6 +58,7 @@ class TestCheckHardcodedUrls(unittest.TestCase):
         self.assertEqual(len(results), 1)  # Only report once per line
         self.assertIn("http://example1.com", results[0].line_content)
         self.assertIn("https://example2.com", results[0].line_content)
+
 
 if __name__ == '__main__':
     unittest.main()

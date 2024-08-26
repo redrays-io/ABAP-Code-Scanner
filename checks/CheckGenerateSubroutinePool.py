@@ -2,13 +2,15 @@ import re
 from dataclasses import dataclass
 from typing import List
 
+
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckGenerateSubroutinePool:
-    title = "Critical actions via generating a subroutine pool"
+    title = "Arbitrary Code Execution Risk via Subroutine Pool Generation"
     severity = "High"
     vulnerability_type = "Code Injection"
 

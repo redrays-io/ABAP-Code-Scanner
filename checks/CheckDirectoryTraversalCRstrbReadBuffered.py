@@ -2,13 +2,15 @@ import re
 from dataclasses import dataclass
 from typing import List
 
+
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckDirectoryTraversalCRstrbReadBuffered:
-    title = "Path Traversal - CALL C_RSTRB_READ_BUFFERED"
+    title = "Directory Traversal Vulnerability in C_RSTRB_READ_BUFFERED Call"
     severity = "Medium"
     vulnerability_type = "Path Traversal"
 

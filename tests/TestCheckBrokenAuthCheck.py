@@ -1,7 +1,7 @@
-# tests/test_check_broken_auth_check.py
-
 import unittest
-from checks.CheckBrokenAuthCheck import CheckBrokenAuthCheck, CheckResult
+
+from checks.CheckBrokenAuthCheck import CheckBrokenAuthCheck
+
 
 class TestCheckBrokenAuthCheck(unittest.TestCase):
 
@@ -77,6 +77,7 @@ class TestCheckBrokenAuthCheck(unittest.TestCase):
         """
         results = self.checker.run(code)
         self.assertEqual(len(results), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

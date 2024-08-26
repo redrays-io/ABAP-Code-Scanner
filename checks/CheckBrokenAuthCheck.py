@@ -1,5 +1,3 @@
-# checks/check_broken_auth_check.py
-
 import re
 from dataclasses import dataclass
 from typing import List
@@ -12,7 +10,7 @@ class CheckResult:
 
 
 class CheckBrokenAuthCheck:
-    title = "Broken AUTH Checks"
+    title = "Insufficient Authorization Check Vulnerability"
     severity = "Medium"
     vulnerability_type = "Access Control Bypass"
 

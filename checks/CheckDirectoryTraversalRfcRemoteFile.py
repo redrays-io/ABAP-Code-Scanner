@@ -1,20 +1,18 @@
-# checks/check_directory_traversal_rfc_remote_file.py
-
 import re
 from dataclasses import dataclass
 from typing import List
-from enum import Enum
+
 
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
-class CheckDirectoryTraversalRfcRemoteFile:
-    title = "Potential Path Traversal detected - RFC_REMOTE_FILE"
-    severity = "HIGH"
-    vulnerability_type = "Path Traversal"
 
+class CheckDirectoryTraversalRfcRemoteFile:
+    title = "Directory Traversal Vulnerability in RFC_REMOTE_FILE"
+    severity = "High"
+    vulnerability_type = "Path Traversal"
 
     def __init__(self):
         self.main_pattern = re.compile(

@@ -1,7 +1,7 @@
-# tests/test_check_hardcoded_credentials.py
-
 import unittest
-from checks.CheckHardcodedCredentials import CheckHardcodedCredentials, CheckResult
+
+from checks.CheckHardcodedCredentials import CheckHardcodedCredentials
+
 
 class TestCheckHardcodedCredentials(unittest.TestCase):
 
@@ -70,6 +70,7 @@ class TestCheckHardcodedCredentials(unittest.TestCase):
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 2)
+
 
 if __name__ == '__main__':
     unittest.main()

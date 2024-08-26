@@ -1,13 +1,14 @@
 # scanner.py
 
-import os
 import importlib
+import os
 from typing import List, NamedTuple
+
 
 class ScanResult(NamedTuple):
     file_path: str
     line_number: int
-    check_name: str
+    title: str
     message: str
     severity: str  # New field for severity
 
@@ -47,7 +48,7 @@ class Scanner:
                 results.append(ScanResult(
                     file_path=file_path,
                     line_number=result.line_number,
-                    check_name=check.__class__.__name__,
+                    title=check.title,
                     message=result.line_content,
                     severity=check.severity
                 ))

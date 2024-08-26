@@ -1,7 +1,7 @@
-# tests/test_check_cross_site_scripting.py
-
 import unittest
-from checks.CheckCrossSiteScripting import CheckCrossSiteScripting, CheckResult
+
+from checks.CheckCrossSiteScripting import CheckCrossSiteScripting
+
 
 class TestCheckCrossSiteScripting(unittest.TestCase):
 
@@ -51,6 +51,7 @@ class TestCheckCrossSiteScripting(unittest.TestCase):
         """
         results = self.checker.run(code)
         self.assertEqual(len(results), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

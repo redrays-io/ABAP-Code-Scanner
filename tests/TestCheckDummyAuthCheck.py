@@ -1,7 +1,7 @@
-# tests/test_check_dummy_auth_check.py
-
 import unittest
-from checks.CheckDummyAuthCheck import CheckDummyAuthCheck, CheckResult
+
+from checks.CheckDummyAuthCheck import CheckDummyAuthCheck
+
 
 class TestCheckDummyAuthCheck(unittest.TestCase):
 
@@ -73,6 +73,7 @@ class TestCheckDummyAuthCheck(unittest.TestCase):
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 1)
+
 
 if __name__ == '__main__':
     unittest.main()

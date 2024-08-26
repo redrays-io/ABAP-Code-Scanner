@@ -1,13 +1,12 @@
-# tests/test_check_os_command_injection_rfc_remote_pipe.py
-
 import unittest
-from checks.CheckOSCommandInjectionRfcRemotePipe import CheckOSCommandInjectionRfcRemotePipe, CheckResult
+
+from checks.CheckOSCommandInjectionRfcRemotePipe import CheckOSCommandInjectionRfcRemotePipe
+
 
 class TestCheckOSCommandInjectionRfcRemotePipe(unittest.TestCase):
 
     def setUp(self):
         self.checker = CheckOSCommandInjectionRfcRemotePipe()
-
 
     def test_vulnerable_rfc_remote_pipe(self):
         code = """
@@ -80,6 +79,7 @@ class TestCheckOSCommandInjectionRfcRemotePipe(unittest.TestCase):
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 1)
+
 
 if __name__ == '__main__':
     unittest.main()

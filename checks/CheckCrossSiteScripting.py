@@ -1,16 +1,16 @@
-# checks/CheckCrossSiteScripting.py
-
 import re
 from dataclasses import dataclass
 from typing import List, Dict
+
 
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckCrossSiteScripting:
-    title = "Potential Cross-Site Scripting vulnerability"
+    title = "Cross-Site Scripting (XSS) Vulnerability in Output Handling"
     severity = "High"
     vulnerability_type = "Cross-Site Scripting"
 

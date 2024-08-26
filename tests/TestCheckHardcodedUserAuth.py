@@ -1,7 +1,7 @@
-# tests/test_check_hardcoded_user_auth.py
-
 import unittest
-from checks.CheckHardcodedUserAuth import CheckHardcodedUserAuth, CheckResult
+
+from checks.CheckHardcodedUserAuth import CheckHardcodedUserAuth
+
 
 class TestCheckHardcodedUserAuth(unittest.TestCase):
 
@@ -71,6 +71,7 @@ class TestCheckHardcodedUserAuth(unittest.TestCase):
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 1)
+
 
 if __name__ == '__main__':
     unittest.main()

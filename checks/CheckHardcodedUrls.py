@@ -1,23 +1,23 @@
-# checks/check_hardcoded_urls.py
-
 import re
 from dataclasses import dataclass
 from typing import List
+
 
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckHardcodedUrls:
-    title = "Hardcoded URLs detected"
+    title = "Exposed Hardcoded URL Detection"
     severity = "Medium"
     vulnerability_type = "Information Disclosure"
 
     def __init__(self):
         self.pattern = re.compile(
             r'\s+["\']https?://\w+.*?$',
-            re.IGNORECASE| re.IGNORECASE| re.MULTILINE
+            re.IGNORECASE | re.IGNORECASE | re.MULTILINE
         )
 
     def run(self, file_content: str) -> List[CheckResult]:

@@ -1,7 +1,7 @@
-# tests/test_check_os_command_injection_sxpg.py
-
 import unittest
-from checks.CheckOSCommandInjectionSxpg import CheckOSCommandInjectionSxpg, CheckResult
+
+from checks.CheckOSCommandInjectionSxpg import CheckOSCommandInjectionSxpg
+
 
 class TestCheckOSCommandInjectionSxpg(unittest.TestCase):
 
@@ -78,6 +78,7 @@ class TestCheckOSCommandInjectionSxpg(unittest.TestCase):
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 1)
+
 
 if __name__ == '__main__':
     unittest.main()

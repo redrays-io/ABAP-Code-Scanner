@@ -1,5 +1,7 @@
 import unittest
-from checks.CheckDirectoryTraversalTransfer import CheckDirectoryTraversalTransfer, CheckResult
+
+from checks.CheckDirectoryTraversalTransfer import CheckDirectoryTraversalTransfer
+
 
 class TestCheckDirectoryTraversalTransfer(unittest.TestCase):
 
@@ -67,6 +69,7 @@ class TestCheckDirectoryTraversalTransfer(unittest.TestCase):
         code = "* TRANSFER lv_content TO p_file."
         results = self.checker.run(code)
         self.assertEqual(len(results), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

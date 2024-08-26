@@ -1,5 +1,3 @@
-# checks/check_os_command_injection_call_system.py
-
 import re
 from dataclasses import dataclass
 from typing import List
@@ -12,7 +10,7 @@ class CheckResult:
 
 
 class CheckOSCommandInjectionCallSystem:
-    title = "Potential OS Command injection detected - CALL SYSTEM"
+    title = "OS Command Injection Vulnerability in CALL SYSTEM statement"
     severity = "High"
     vulnerability_type = "OS Command injection"
 

@@ -2,13 +2,15 @@ import re
 from dataclasses import dataclass
 from typing import List
 
+
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckGetPersistentByQuery:
-    title = "ADBC Injection via \"get_persistent_by_query\" method"
+    title = "ADBC Injection Vulnerability in get_persistent_by_query Method"
     severity = "High"
     vulnerability_type = "ADBC Injection"
 
@@ -22,4 +24,3 @@ class CheckGetPersistentByQuery:
             if self.pattern.search(line):
                 results.append(CheckResult(i, line.strip()))
         return results
-

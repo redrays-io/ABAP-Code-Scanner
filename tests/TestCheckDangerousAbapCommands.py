@@ -1,7 +1,7 @@
-# tests/test_check_dangerous_abap_commands.py
-
 import unittest
-from checks.CheckDangerousAbapCommands import CheckDangerousAbapCommands, CheckResult
+
+from checks.CheckDangerousAbapCommands import CheckDangerousAbapCommands
+
 
 class TestCheckDangerousAbapCommands(unittest.TestCase):
 
@@ -57,6 +57,7 @@ class TestCheckDangerousAbapCommands(unittest.TestCase):
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 1)
+
 
 if __name__ == '__main__':
     unittest.main()

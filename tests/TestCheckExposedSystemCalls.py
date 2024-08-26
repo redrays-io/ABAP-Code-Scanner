@@ -1,7 +1,7 @@
-# tests/test_check_exposed_system_calls.py
-
 import unittest
-from checks.CheckExposedSystemCalls import CheckExposedSystemCalls, CheckResult
+
+from checks.CheckExposedSystemCalls import CheckExposedSystemCalls
+
 
 class TestCheckExposedSystemCalls(unittest.TestCase):
 
@@ -82,6 +82,7 @@ class TestCheckExposedSystemCalls(unittest.TestCase):
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 1)
+
 
 if __name__ == '__main__':
     unittest.main()

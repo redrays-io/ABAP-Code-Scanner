@@ -1,16 +1,16 @@
-# checks/check_exposed_system_calls.py
-
 import re
 from dataclasses import dataclass
 from typing import List
+
 
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckExposedSystemCalls:
-    title = "Exposed System Call"
+    title = "Unsafe Exposure of System Call Functionality"
     severity = "High"
     vulnerability_type = "Danger System Call"
 

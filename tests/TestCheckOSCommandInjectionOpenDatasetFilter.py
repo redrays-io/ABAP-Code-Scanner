@@ -1,7 +1,7 @@
-# tests/test_check_os_command_injection_open_dataset_filter.py
-
 import unittest
-from checks.CheckOSCommandInjectionOpenDatasetFilter import CheckOSCommandInjectionOpenDatasetFilter, CheckResult
+
+from checks.CheckOSCommandInjectionOpenDatasetFilter import CheckOSCommandInjectionOpenDatasetFilter
+
 
 class TestCheckOSCommandInjectionOpenDatasetFilter(unittest.TestCase):
 
@@ -69,6 +69,7 @@ class TestCheckOSCommandInjectionOpenDatasetFilter(unittest.TestCase):
         """
         results = self.checker.run(code)
         self.assertEqual(len(results), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

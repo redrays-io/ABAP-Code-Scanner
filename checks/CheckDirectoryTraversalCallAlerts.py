@@ -2,13 +2,15 @@ import re
 from dataclasses import dataclass
 from typing import List
 
+
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckDirectoryTraversalCallAlerts:
-    title = "Path Traversal - CALL ALERTS"
+    title = "Directory Traversal Vulnerability in CALL ALERTS"
     severity = "Medium"
     vulnerability_type = "Path Traversal"
 

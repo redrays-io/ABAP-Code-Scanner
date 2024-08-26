@@ -1,5 +1,7 @@
 import unittest
-from checks.CheckCallTransformation import CheckCallTransformation, CheckResult
+
+from checks.CheckCallTransformation import CheckCallTransformation
+
 
 class TestCheckCallTransformation(unittest.TestCase):
 
@@ -53,6 +55,7 @@ class TestCheckCallTransformation(unittest.TestCase):
         code = "* This is a comment: CALL TRANSFORMATION should not be detected here."
         results = self.checker.run(code)
         self.assertEqual(len(results), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,13 +1,13 @@
-# checks/check_hardcoded_ip_addresses.py
-
 import re
 from dataclasses import dataclass
 from typing import List
+
 
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
+
 
 class CheckHardcodedIpAddresses:
     title = "Using hardcoded IP addresses is security-sensitive"
@@ -26,14 +26,14 @@ class CheckHardcodedIpAddresses:
 
     def is_exception(self, ip: str) -> bool:
         exceptions = [
-            r'^127\.',                  # Loopback
-            r'^255\.255\.255\.255$',    # Broadcast
-            r'^0\.0\.0\.0$',            # Non-routable
+            r'^127\.',  # Loopback
+            r'^255\.255\.255\.255$',  # Broadcast
+            r'^0\.0\.0\.0$',  # Non-routable
             r'^2\.5\.\d{1,3}\.\d{1,3}$',  # Potential OID
-            r'^192\.0\.2\.',            # Documentation (RFC 5737)
-            r'^198\.51\.100\.',         # Documentation (RFC 5737)
-            r'^203\.0\.113\.',          # Documentation (RFC 5737)
-            r'^2001:db8::1'               # IPv6 Documentation (RFC 3849)
+            r'^192\.0\.2\.',  # Documentation (RFC 5737)
+            r'^198\.51\.100\.',  # Documentation (RFC 5737)
+            r'^203\.0\.113\.',  # Documentation (RFC 5737)
+            r'^2001:db8::1'  # IPv6 Documentation (RFC 3849)
         ]
         return any(re.match(pattern, ip) for pattern in exceptions)
 
@@ -50,4 +50,3 @@ class CheckHardcodedIpAddresses:
                     results.append(CheckResult(i, line.strip()))
                     break  # Only report one issue per line
         return results
-

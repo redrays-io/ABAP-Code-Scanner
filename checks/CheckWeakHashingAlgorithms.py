@@ -1,5 +1,3 @@
-# checks/check_weak_hashing_algorithms.py
-
 import re
 from dataclasses import dataclass
 from typing import List
@@ -12,7 +10,7 @@ class CheckResult:
 
 
 class CheckWeakHashingAlgorithms:
-    title = "Using weak hashing algorithms is security-sensitive"
+    title = "Using weak hashing algorithms"
     severity = "Critical"
     vulnerability_type = "Weak Cryptography"
 
@@ -32,5 +30,3 @@ class CheckWeakHashingAlgorithms:
             if self.pattern.search(line):
                 results.append(CheckResult(i, line.strip()))
         return results
-
-

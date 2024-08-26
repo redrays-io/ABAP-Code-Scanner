@@ -1,7 +1,7 @@
-# tests/test_check_directory_traversal_read_dataset.py
-
 import unittest
-from checks.CheckDirectoryTraversalReadDataset import CheckDirectoryTraversalReadDataset, CheckResult
+
+from checks.CheckDirectoryTraversalReadDataset import CheckDirectoryTraversalReadDataset
+
 
 class TestCheckDirectoryTraversalReadDataset(unittest.TestCase):
 
@@ -96,6 +96,7 @@ class TestCheckDirectoryTraversalReadDataset(unittest.TestCase):
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 1)
+
 
 if __name__ == '__main__':
     unittest.main()

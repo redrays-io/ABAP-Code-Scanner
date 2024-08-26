@@ -1,7 +1,7 @@
-# tests/test_check_dos_in_do_loop.py
-
 import unittest
-from checks.CheckDosInDoLoop import CheckDosInDoLoop, CheckResult
+
+from checks.CheckDosInDoLoop import CheckDosInDoLoop
+
 
 class TestCheckDosInDoLoop(unittest.TestCase):
 
@@ -76,6 +76,7 @@ class TestCheckDosInDoLoop(unittest.TestCase):
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 1)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,25 @@
+[flake8]
+# Increase the max line length to 120 characters
+max-line-length = 120
+
+# Ignore specific errors/warnings:
+# E501: Line too long
+# W291: Trailing whitespace
+# E128: Continuation line under-indented for visual indent
+# E126: Continuation line over-indented for hanging indent
+# E127: Continuation line over-indented for visual indent
+# W503: Line break occurred before a binary operator
+# E266: Too many leading '#' for block comment
+ignore = E501, W291, E128, E126, E127, W503, E266, W605, C901, E303
+
+# Exclude some directories from checking
+exclude =
+    .git,
+    __pycache__,
+    build,
+    dist,
+    .venv
+
+
+# Maximum allowed complexity for functions
+max-complexity = 10

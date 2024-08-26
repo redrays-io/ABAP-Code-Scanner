@@ -1,7 +1,8 @@
-# tests/test_check_directory_traversal_c_rstrb_read_buffered.py
-
 import unittest
-from checks.CheckDirectoryTraversalCRstrbReadBuffered import CheckDirectoryTraversalCRstrbReadBuffered, CheckResult
+
+from checks.CheckDirectoryTraversalCRstrbReadBuffered import CheckDirectoryTraversalCRstrbReadBuffered
+
+
 class TestCheckDirectoryTraversalCRstrbReadBuffered(unittest.TestCase):
 
     def setUp(self):
@@ -51,6 +52,7 @@ class TestCheckDirectoryTraversalCRstrbReadBuffered(unittest.TestCase):
         """
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
+
 
 if __name__ == '__main__':
     unittest.main()

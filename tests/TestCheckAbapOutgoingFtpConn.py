@@ -1,7 +1,7 @@
-# tests/test_check_abap_outgoing_ftp_conn.py
-
 import unittest
-from checks.CheckAbapOutgoingFtpConn import CheckAbapOutgoingFtpConn, CheckResult
+
+from checks.CheckAbapOutgoingFtpConn import CheckAbapOutgoingFtpConn
+
 
 class TestCheckAbapOutgoingFtpConn(unittest.TestCase):
 
@@ -56,6 +56,7 @@ class TestCheckAbapOutgoingFtpConn(unittest.TestCase):
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 2)
+
 
 if __name__ == '__main__':
     unittest.main()

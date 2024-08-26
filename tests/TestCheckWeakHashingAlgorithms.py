@@ -1,13 +1,12 @@
-# tests/test_check_weak_hashing_algorithms.py
-
 import unittest
-from checks.CheckWeakHashingAlgorithms import CheckWeakHashingAlgorithms, CheckResult
+
+from checks.CheckWeakHashingAlgorithms import CheckWeakHashingAlgorithms
+
 
 class TestCheckWeakHashingAlgorithms(unittest.TestCase):
 
     def setUp(self):
         self.checker = CheckWeakHashingAlgorithms()
-
 
     def test_all_weak_algorithms(self):
         weak_algorithms = [
@@ -51,6 +50,7 @@ class TestCheckWeakHashingAlgorithms(unittest.TestCase):
         """
         results = self.checker.run(code)
         self.assertEqual(len(results), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

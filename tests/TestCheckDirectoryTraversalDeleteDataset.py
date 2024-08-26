@@ -1,7 +1,7 @@
-# tests/test_check_directory_traversal_delete_dataset.py
-
 import unittest
-from checks.CheckDirectoryTraversalDeleteDataset import CheckDirectoryTraversalDeleteDataset, CheckResult
+
+from checks.CheckDirectoryTraversalDeleteDataset import CheckDirectoryTraversalDeleteDataset
+
 
 class TestCheckDirectoryTraversalDeleteDataset(unittest.TestCase):
 
@@ -71,6 +71,7 @@ class TestCheckDirectoryTraversalDeleteDataset(unittest.TestCase):
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].line_number, 3)
         self.assertIn("DELETE DATASET file", results[0].line_content)
+
 
 if __name__ == '__main__':
     unittest.main()

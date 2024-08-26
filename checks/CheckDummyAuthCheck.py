@@ -1,5 +1,3 @@
-# checks/check_dummy_auth_check.py
-
 import re
 from dataclasses import dataclass
 from typing import List
@@ -12,7 +10,7 @@ class CheckResult:
 
 
 class CheckDummyAuthCheck:
-    title = "Dummy AUTHORITY Checks"
+    title = "Ineffective Authorization Checks Detected"
     severity = "High"
     vulnerability_type = "Access Control Bypass"
 
@@ -54,4 +52,3 @@ class CheckDummyAuthCheck:
                 line_number = file_content[:match.start()].count('\n') + 1
                 results.append(CheckResult(line_number, match.group().strip()))
         return results
-

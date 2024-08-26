@@ -1,15 +1,16 @@
 import re
 from dataclasses import dataclass
 from typing import List
-from enum import Enum
+
 
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckDosInDoLoop:
-    title = "Denial of Service (DOS) in do/enddo loop."
+    title = "Potential Denial of Service (DoS) Vulnerability in DO/ENDDO Loop Construction"
     severity = "Medium"
     vulnerability_type = "DOS"
 
@@ -25,4 +26,3 @@ class CheckDosInDoLoop:
             line_number = file_content[:match.start()].count('\n') + 1
             results.append(CheckResult(line_number, match.group().strip()))
         return results
-

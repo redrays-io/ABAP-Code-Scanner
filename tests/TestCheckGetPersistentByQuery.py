@@ -1,5 +1,7 @@
 import unittest
-from checks.CheckGetPersistentByQuery import CheckGetPersistentByQuery, CheckResult
+
+from checks.CheckGetPersistentByQuery import CheckGetPersistentByQuery
+
 
 class TestCheckGetPersistentByQuery(unittest.TestCase):
 
@@ -49,6 +51,7 @@ class TestCheckGetPersistentByQuery(unittest.TestCase):
         code = "DATA: lv_string = 'This string contains get_persistent_by_query('."
         results = self.checker.run(code)
         self.assertEqual(len(results), 1)  # Note: This detects the method call even in strings
+
 
 if __name__ == '__main__':
     unittest.main()

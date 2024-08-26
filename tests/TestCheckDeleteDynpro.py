@@ -1,5 +1,7 @@
 import unittest
-from checks.CheckDeleteDynpro import CheckDeleteDynpro, CheckResult
+
+from checks.CheckDeleteDynpro import CheckDeleteDynpro
+
 
 class TestCheckDeleteDynpro(unittest.TestCase):
 
@@ -59,6 +61,7 @@ class TestCheckDeleteDynpro(unittest.TestCase):
         code = "* This is a comment: DELETE DYNPRO should not be detected here."
         results = self.checker.run(code)
         self.assertEqual(len(results), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

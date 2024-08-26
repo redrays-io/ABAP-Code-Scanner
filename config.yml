@@ -35,7 +35,7 @@ checks:
 
 file_extensions:
   - .txt
-  - .DECOMP
+  - .abap
 
 exclude_patterns:
   - "**/test/**"

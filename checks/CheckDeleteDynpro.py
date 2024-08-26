@@ -2,13 +2,15 @@ import re
 from dataclasses import dataclass
 from typing import List
 
+
 @dataclass
 class CheckResult:
     line_number: int
     line_content: str
 
+
 class CheckDeleteDynpro:
-    title = "Critical actions via deleting a screen"
+    title = "Unauthorized Screen Deletion Risk"
     severity = "High"
     vulnerability_type = "Denial of Service"
 
