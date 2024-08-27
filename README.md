@@ -1,4 +1,4 @@
-# ABAP Code Scanner Framework
+# ABAP Code Scanner
 
 ## Overview
 
