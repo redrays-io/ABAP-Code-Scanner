@@ -2,7 +2,7 @@
 
 ## Overview
 
-The ABAP Code Analyzer Framework is a powerful tool designed to analyze ABAP (Advanced Business Application Programming) code for potential security vulnerabilities, code quality issues, and best practice violations. This framework provides a flexible and extensible way to scan ABAP code and generate comprehensive reports on various aspects of code security and quality.
+The ABAP Code Scanner Framework is a powerful tool designed to analyze ABAP (Advanced Business Application Programming) code for potential security vulnerabilities, code quality issues, and best practice violations. This framework provides a flexible and extensible way to scan ABAP code and generate comprehensive reports on various aspects of code security and quality.
 
 ## Features
 
@@ -41,7 +41,7 @@ This feature will enable the framework to:
 
 ## Advanced Private Version
 
-We are excited to announce that a more advanced version of the ABAP Code Analyzer is available as private software. This enhanced version includes:
+We are excited to announce that a more advanced version of the ABAP Code Scanner is available as private software. This enhanced version includes:
 
 - Over 250 security checks for comprehensive code analysis
 - Additional reporting formats and integration options
@@ -58,8 +58,8 @@ For more information about the advanced private version, please contact RedRays,
 
 1. Clone the repository:
    ```
-   git clone https://github.com/redrays-io/ABAP-Code-Analyzer.git
-   cd ABAP-Code-Analyzer
+   git clone https://github.com/redrays-io/ABAP-Code-Scanner.git
+   cd ABAP-Code-Scanner
    ```
 
 2. Install the required dependencies:
@@ -69,7 +69,7 @@ For more information about the advanced private version, please contact RedRays,
 
 ## Usage
 
-To run the ABAP Code Analyzer:
+To run the ABAP Code Scanner:
 
 ```
 python main.py path/to/abap/code/dir
@@ -128,7 +128,7 @@ On Unix-like systems:
 
 ## Contributing
 
-Contributions to the ABAP Code Analyzer Framework are welcome! Please feel free to submit pull requests, create issues or spread the word.
+Contributions to the ABAP Code Scanner Framework are welcome! Please feel free to submit pull requests, create issues or spread the word.
 
 ## License
 
