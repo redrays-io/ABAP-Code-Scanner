@@ -3,6 +3,7 @@
 import importlib
 import os
 from typing import List, NamedTuple
+from tqdm import tqdm
 
 
 class ScanResult(NamedTuple):
@@ -10,7 +11,7 @@ class ScanResult(NamedTuple):
     line_number: int
     title: str
     message: str
-    severity: str  # New field for severity
+    severity: str
 
 
 class Scanner:
@@ -28,14 +29,21 @@ class Scanner:
 
     def scan(self, path: str) -> List[ScanResult]:
         results = []
+        files_to_scan = []
+
+        # Collect all files to scan
         if os.path.isfile(path):
-            results.extend(self._scan_file(path))
+            files_to_scan.append(path)
         elif os.path.isdir(path):
             for root, _, files in os.walk(path):
                 for file in files:
                     if any(file.endswith(ext) for ext in self.config.get_file_extensions()):
-                        file_path = os.path.join(root, file)
-                        results.extend(self._scan_file(file_path))
+                        files_to_scan.append(os.path.join(root, file))
+
+        # Scan files with progress bar
+        for file_path in tqdm(files_to_scan, desc="Scanning files", unit="file"):
+            results.extend(self._scan_file(file_path))
+
         return results
 
     def _scan_file(self, file_path: str) -> List[ScanResult]:
