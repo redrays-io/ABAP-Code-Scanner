@@ -1,8 +1,8 @@
-# ABAP Code Scanner Framework
+# ABAP Code Scanner
 
 ## Overview
 
-The ABAP Code Scanner Framework is a powerful tool designed to analyze ABAP (Advanced Business Application Programming) code for potential security vulnerabilities, code quality issues, and best practice violations. This framework provides a flexible and extensible way to scan ABAP code and generate comprehensive reports on various aspects of code security and quality.
+The ABAP Code Scanner is a powerful tool designed to analyze ABAP (Advanced Business Application Programming) code for potential security vulnerabilities, code quality issues, and best practice violations. This provides a flexible and extensible way to scan ABAP code and generate comprehensive reports on various aspects of code security and quality.
 
 ## Features
 
@@ -34,7 +34,7 @@ Our dataflow analysis will:
 - Identify potential injection points where tainted data might be used unsafely.
 - Provide more accurate and context-aware vulnerability detection.
 
-This feature will enable the framework to:
+This feature will enable the to:
 - Reduce false positives by understanding the context and transformations of data.
 - Detect complex vulnerabilities that simple pattern matching might miss.
 - Offer more detailed and actionable reports on potential security issues.
@@ -128,7 +128,7 @@ On Unix-like systems:
 
 ## Contributing
 
-Contributions to the ABAP Code Scanner Framework are welcome! Please feel free to submit pull requests, create issues or spread the word.
+Contributions to the ABAP Code Scanner are welcome! Please feel free to submit pull requests, create issues or spread the word.
 
 ## License
 
