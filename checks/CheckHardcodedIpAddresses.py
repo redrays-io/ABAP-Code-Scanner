@@ -11,7 +11,7 @@ class CheckResult:
 
 class CheckHardcodedIpAddresses:
     title = "Using hardcoded IP addresses is security-sensitive"
-    severity = "Minor"
+    severity = "Low"
     vulnerability_type = "Information Disclosure"
 
     def __init__(self):

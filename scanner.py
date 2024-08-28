@@ -27,7 +27,7 @@ class Scanner:
             checks.append(check_class())
         return checks
 
-    def scan(self, path: str) -> List[ScanResult]:
+    def scan(self, path: str, limit: int = 40000) -> List[ScanResult]:
         results = []
         files_to_scan = []
 
@@ -39,6 +39,13 @@ class Scanner:
                 for file in files:
                     if any(file.endswith(ext) for ext in self.config.get_file_extensions()):
                         files_to_scan.append(os.path.join(root, file))
+                        if len(files_to_scan) >= limit:
+                            break
+                if len(files_to_scan) >= limit:
+                    break
+
+        # Limit the number of files to scan
+        files_to_scan = files_to_scan[:limit]
 
         # Scan files with progress bar
         for file_path in tqdm(files_to_scan, desc="Scanning files", unit="file"):

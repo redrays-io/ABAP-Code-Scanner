@@ -1,19 +1,22 @@
-from dataclasses import dataclass
-from typing import List
+# generate_xlsx_report.py
 
-import openpyxl
+from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.utils import get_column_letter
+from typing import List, NamedTuple
+import re
 
-
-@dataclass
-class ScanResult:
+class ScanResult(NamedTuple):
     file_path: str
     line_number: int
     title: str
     message: str
     severity: str
 
+
+def sanitize_for_excel(text):
+    illegal_characters_pattern = re.compile(r'[\000-\010]|[\013-\014]|[\016-\037]')
+    return illegal_characters_pattern.sub('', str(text))
 
 def severity_key(result: ScanResult):
     severity_order = {
@@ -25,14 +28,10 @@ def severity_key(result: ScanResult):
     }
     return severity_order.get(result.severity, 6)
 
-
 def generate_xlsx_report(results: List[ScanResult], output_file: str):
-    # Sort results by severity
-    results.sort(key=severity_key)
-
-    wb = openpyxl.Workbook()
+    wb = Workbook()
     ws = wb.active
-    ws.title = "Scan Results"
+    ws.title = "Security Scan Results"
 
     # Define styles
     header_font = Font(bold=True, color="FFFFFF")
@@ -58,11 +57,11 @@ def generate_xlsx_report(results: List[ScanResult], output_file: str):
 
     # Write data
     for row, result in enumerate(results, start=2):
-        ws.cell(row=row, column=1, value=result.severity).alignment = wrapped_alignment
+        ws.cell(row=row, column=1, value=sanitize_for_excel(result.severity)).alignment = wrapped_alignment
         ws.cell(row=row, column=2, value=result.title).alignment = wrapped_alignment
-        ws.cell(row=row, column=3, value=result.file_path).alignment = wrapped_alignment
-        ws.cell(row=row, column=4, value=result.line_number).alignment = wrapped_alignment
-        ws.cell(row=row, column=5, value=result.message).alignment = wrapped_alignment
+        ws.cell(row=row, column=3, value=sanitize_for_excel(result.file_path)).alignment = wrapped_alignment
+        ws.cell(row=row, column=4, value=sanitize_for_excel(result.line_number)).alignment = wrapped_alignment
+        ws.cell(row=row, column=5, value=sanitize_for_excel(result.message)).alignment = wrapped_alignment
 
         # Apply color to severity cell
         severity_cell = ws.cell(row=row, column=1)
@@ -93,17 +92,12 @@ def generate_xlsx_report(results: List[ScanResult], output_file: str):
     # Save the workbook
     wb.save(output_file)
 
-
-# Example usage
 if __name__ == "__main__":
-    # Sample data
+    # Example usage
     sample_results = [
-        ScanResult("file1.abap", 10, "CheckCrossSiteScripting", "Potential XSS vulnerability", "High"),
-        ScanResult("file2.abap", 25, "CheckHardcodedCredentials", "Hardcoded password detected", "Critical"),
-        ScanResult("file1.abap", 50, "CheckOSCommandInjection", "Potential OS command injection", "High"),
-        ScanResult("file3.abap", 100, "CheckWeakCrypto", "Use of weak cryptographic algorithm", "Medium"),
-        ScanResult("file4.abap", 75, "CheckInfoDisclosure", "Potential information disclosure", "Low"),
+        ScanResult("file1.abap", 10, "Potential XSS", "Unsanitized input", "High"),
+        ScanResult("file2.abap", 25, "SQL Injection", "Dynamic SQL query", "Critical"),
+        # Add more sample results as needed
     ]
-
-    generate_xlsx_report(sample_results, "security_scan_report.xlsx")
-    print("XLSX report generated successfully.")
+    generate_xlsx_report(sample_results, "sample_security_scan_report.xlsx")
+    print("Sample report generated: sample_security_scan_report.xlsx")
